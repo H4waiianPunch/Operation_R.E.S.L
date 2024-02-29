@@ -18,4 +18,9 @@ encrypted = base64.b64decode(encrypted_base64)
 cipher_rsa = PKCS1_OAEP.new(private_key)
 decrypted = cipher_rsa.decrypt(encrypted)
 
+# Write it to a file
+decrypted_file_path = "C:\\Users\\ryank\\OneDrive\\Desktop\\CleanUp\\School\\Year2\\Semester 2\\Capstone\\Operation RESL\\Test Files\\decrypted_data.txt"
+with open(decrypted_file_path, "w") as decrypted_file:
+    decrypted_file.write(decrypted.decode())
+
 print("Decrypted data:", decrypted.decode())
