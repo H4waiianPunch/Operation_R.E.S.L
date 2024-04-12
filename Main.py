@@ -1,35 +1,28 @@
-import wmi
+# Modules to import
 import sys
-#from Crypto.PublicKey import RSA
-#from PublicKeyDictionary import PublicKeyUser
 import json
-#import os
 import time
-
 import CreateKeys
 import TestFunction
-import USBIN
 
-
+#Save public keys
 def save_public_keys(public_keys):
     with open('public.keys.json', 'w') as file:
         json.dump(public_keys, file)
 
-#charles work below
+#Load public keys
 def load_public_keys():
     with open('public.keys.json', 'r') as file:
         data = json.load(file)
     return data
 
-
-
-
-def check_user(userID, pubkey):
-    public_keys = load_public_keys()
-    for user_dict in public_keys:
-        if user_dict.get('UserID') == userID and str(user_dict.get('Pubkey')) == str(pubkey):
-            return True
-    return False
+# Old check for if user is admin(all users are right now)
+#def check_user(userID, pubkey):
+#    public_keys = load_public_keys()
+#    for user_dict in public_keys:
+#        if user_dict.get('UserID') == userID and str(user_dict.get('Pubkey')) == str(pubkey):
+#            return True
+#    return False
 
 def print_ascii_art(art):
     for line in art.splitlines():
@@ -37,11 +30,17 @@ def print_ascii_art(art):
 
 
 ascii_art = """
-   ____        _____       ____        _     
-  |  _ \\      | ____|       / ___|     | |    
-  | |_) |      |  _|        \\___ \\    | |    
-  |  _ <   _   | |___   _   ___) |  _   | |___ 
-  |_|\\_\\(_)  |_____| (_)  |____/ (_)  |_____|
+$$$$$$\                                             $$\     $$\                           $$$$$$$\      $$$$$$$$\      $$$$$$\      $$\           
+$$  __$$\                                           $$ |    \__|                          $$  __$$\     $$  _____|    $$  __$$\     $$ |          
+$$ /  $$ | $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$\   $$\  $$$$$$\  $$$$$$$\        $$ |  $$ |    $$ |          $$ /  \__|    $$ |          
+$$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\  \____$$\ \_$$  _|  $$ |$$  __$$\ $$  __$$\       $$$$$$$  |    $$$$$\        \$$$$$$\      $$ |          
+$$ |  $$ |$$ /  $$ |$$$$$$$$ |$$ |  \__| $$$$$$$ |  $$ |    $$ |$$ /  $$ |$$ |  $$ |      $$  __$$<     $$  __|        \____$$\     $$ |          
+$$ |  $$ |$$ |  $$ |$$   ____|$$ |      $$  __$$ |  $$ |$$\ $$ |$$ |  $$ |$$ |  $$ |      $$ |  $$ |    $$ |          $$\   $$ |    $$ |          
+ $$$$$$  |$$$$$$$  |\$$$$$$$\ $$ |      \$$$$$$$ |  \$$$$  |$$ |\$$$$$$  |$$ |  $$ |      $$ |  $$ |$$\ $$$$$$$$\ $$\ \$$$$$$  |$$\ $$$$$$$$\ $$\ 
+ \______/ $$  ____/  \_______|\__|       \_______|   \____/ \__| \______/ \__|  \__|      \__|  \__|\__|\________|\__| \______/ \__|\________|\__|
+          $$ |                                                                                                                                    
+          $$ |                                                                                                                                    
+          \__|                                                                                                                                    
 """
 
 print_ascii_art(ascii_art)
@@ -69,11 +68,20 @@ def mainpart():
 
 #Charles work below
 
+#def enter_admin_mode():
+#    print("\nAdministrative Mode:")
+#    decrypted_string, user_name = TestFunction.Allow()
+#    if decrypted_string:
+#        print("User authenticated.")
+ #       administrative_menu(decrypted_string, user_name)
+#    else:
+ #       print("Access denied.")
+
 def enter_admin_mode():
     print("\nAdministrative Mode:")
-    decrypted_string, user_name = TestFunction.Allow()
-
-    if decrypted_string:
+    result = TestFunction.Allow()
+    if result is not None:
+        decrypted_string, user_name = result
         print("User authenticated.")
         administrative_menu(decrypted_string, user_name)
     else:
@@ -164,4 +172,4 @@ def unlock_menu():
 
 
 if __name__ == "__main__":
-    mainpart()
+   mainpart()

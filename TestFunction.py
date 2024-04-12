@@ -62,15 +62,31 @@ def encrypt_rand_string(user_name):
     encrypted_data = cipher.encrypt(rand_string.encode())
     return encrypted_data, rsa_key
 
-def decrypt_data(encrypted_data, rsa_key: RsaKey):
-    private_key = load_private_key()
-    rsa_private_key = RSA.import_key(private_key)
-    if rsa_private_key.n != rsa_key.n or rsa_private_key.e != rsa_key.e:
-        print("Private key does not match the public key.")
+#def decrypt_data(encrypted_data, rsa_key: RsaKey):
+#    private_key = load_private_key()
+#    rsa_private_key = RSA.import_key(private_key)
+#    if rsa_private_key.n != rsa_key.n or rsa_private_key.e != rsa_key.e:
+#        print("Private key does not match the public key.")
+#        return None
+#    cipher = PKCS1_OAEP.new(rsa_private_key)
+#    decrypted_data = cipher.decrypt(encrypted_data)
+#    return decrypted_data.decode()
+
+def decrypt_data(encrypted_data, rsa_key_pair: RsaKey):
+    try:
+        private_key = load_private_key()
+        rsa_private_key = RSA.import_key(private_key)
+
+        if rsa_private_key.n != rsa_key_pair.n or rsa_private_key.e != rsa_key_pair.e:
+            raise ValueError("Private key does not match the public key.")
+
+        cipher = PKCS1_OAEP.new(rsa_private_key)
+        decrypted_data = cipher.decrypt(encrypted_data)
+        return decrypted_data.decode()
+
+    except Exception as e:
+        print("Error during decryption:", e)
         return None
-    cipher = PKCS1_OAEP.new(rsa_private_key)
-    decrypted_data = cipher.decrypt(encrypted_data)
-    return decrypted_data.decode()
 
 
 
