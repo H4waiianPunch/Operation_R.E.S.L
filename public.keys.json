@@ -1,0 +1,14 @@
+[
+    {
+        "UserID": "Ryan",
+        "Pubkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1zcHQUdb1WUMFealtvpD\nn98NLRQx9rJnY53l+9eH9ca0FhJEWdF+9f1WSGVp0EUgMdSj2AjcwgDwWP8/zTpQ\nPlEf2lnDBsm0GqmxA15/ICVn6yFMt0aoFvTFy0Ts01naGLxEYWIm+/bqj1g0UskL\nfg0jWlFjN/rqpHS21senA0GKyD7hQPg0pI9h7jxC44v/lMwpWgpzI93inRyT1FyG\n/7DAojAiEDE0EbtKgx10aUypqTKQ/PT+Q5jjbQIkfD2dyiu+VDNEHH96jRbUFJiD\nULBrf65Gf5YzYAsCLZnQgk5E8z4KpFQoZuPkgs3q33+TlSkEoJJZtJpsvXtspv7n\nPQIDAQAB\n-----END PUBLIC KEY-----"
+    },
+    {
+        "UserID": "Malcolm",
+        "Pubkey": 4321
+    },
+    {
+        "UserID": "Test",
+        "Pubkey": "-----BEGIN PUBLIC KEY-----\nMIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBUShQPDrG0fbhzHJDUaW9+\nc5we2ArgYki8n9DXpQrwZVHTIhcRMO0j3w7I+orH5Fj3p8kfeTZRHwyZxV+ybmMO\nw3hEJTNDjNJzoiGR/hjRHtQpE+vjMH3K2UZUDennbR8LvMsYenJmFOD6W6nK78oW\nOzRaq95Q+0olqizIy+XStUCkSlMdTEboJDzrxBjgxPUFpONEzpTGVvybKYmKFoLU\n613agFq5TwqEzVoByFPIrIm4V5X02XWFO24Hsn4FbDBmQXO5+HiPY1NaAvxsvHgq\n8Cf6pNP0Ajdyb9rJvbp1APSdn5xKXVnja9d0HnQCafnJCdV0hz4CvYmweX2lS+vr\nAgMBAAE=\n-----END PUBLIC KEY-----"
+    }
+]
