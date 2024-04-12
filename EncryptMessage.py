@@ -20,7 +20,6 @@ with open("C:\\Users\\ryank\\OneDrive\\Desktop\\CleanUp\\School\\Year2\\Semester
 data_to_encrypt = b"This needs to be encrypted"
 cipher_rsa = PKCS1_OAEP.new(public_key)
 encrypted = cipher_rsa.encrypt(data_to_encrypt)
-
 encrypted_base64 = base64.b64encode(encrypted)
 
 file_path = "C:\\Users\\ryank\\OneDrive\\Desktop\\CleanUp\\School\\Year2\\Semester 2\\Capstone\\Operation RESL\\Test Files\\encrypted_data.txt"
