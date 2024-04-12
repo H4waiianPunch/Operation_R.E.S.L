@@ -15,10 +15,25 @@ def load_public_keys():
         data = json.load(file)
     return data
 
+#def load_private_key():
+#    with open("D:\private.pem", 'rb') as file:
+#        private_key = file.read()
+#    return private_key
+
 def load_private_key():
-    with open("D:\private.pem", 'rb') as file:
-        private_key = file.read()
-    return private_key
+    try:
+        with open("D:\private.pem", 'rb') as file:
+            private_key = file.read()
+        return private_key
+    except FileNotFoundError:
+        print("Private key file not found.")
+        sys.exit(1)
+    except ValueError:
+        print("Private key is not in the expected format.")
+        sys.exit(1)
+
+
+
 
 def gen_rand_string(length):
     characters = string.ascii_letters + string.digits
@@ -33,7 +48,7 @@ def encrypt_rand_string(user_name):
             break
     if not user_public_key:
         print("User {} not found or does not have a public key.".format(user_name))
-        return None
+        return None, None
 
     # Load the RSA Public key
     rsa_key = RSA.import_key(user_public_key)
@@ -41,7 +56,7 @@ def encrypt_rand_string(user_name):
 
     # Generate the random string
     rand_string = gen_rand_string(16)
-    print("Random String:", rand_string)
+    #print("Random String:", rand_string)
 
     # Encrypt the random string
     encrypted_data = cipher.encrypt(rand_string.encode())
@@ -59,17 +74,19 @@ def decrypt_data(encrypted_data, rsa_key: RsaKey):
 
 
 
-def main():
+def Allow():
     USBIN.detect_usb()
     user_name = input("Enter your name: ")
     encrypted_string, rsa_key = encrypt_rand_string(user_name)
     if encrypted_string:
-        print("Encrypted string:", encrypted_string.hex())
+        #print("Encrypted string:", encrypted_string.hex())
         decrypted_string = decrypt_data(encrypted_string, rsa_key)
         if decrypted_string:
-            print("Decrypted string:", decrypted_string)
+            #print("Decrypted string:", decrypted_string)
+            return decrypted_string, user_name
         else:
             print("Decryption unsuccessful.")
+            return None
 
 if __name__ == "__main__":
-    main()
+    Allow()
