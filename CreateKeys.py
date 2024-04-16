@@ -7,7 +7,7 @@ def new_key_generation():
     key = RSA.generate(2048)
 
     # Specifies the folder they're saved in. This would need to be a more generic location. Picked a specific one for testing
-    save_dir = "C:\\Users\\ryank\\OneDrive\\Desktop\\CleanUp\\School\\Year2\\Semester 2\\Capstone\\Operation RESL\\Test Files\\testkeys\\"
+    save_dir = "C:\\Temp\\"
 
     # Extract private and public keys
     private_key = key.export_key()

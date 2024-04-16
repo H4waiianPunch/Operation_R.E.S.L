@@ -15,11 +15,6 @@ def load_public_keys():
         data = json.load(file)
     return data
 
-#def load_private_key():
-#    with open("D:\private.pem", 'rb') as file:
-#        private_key = file.read()
-#    return private_key
-
 def load_private_key():
     try:
         with open("D:\private.pem", 'rb') as file:
@@ -31,8 +26,6 @@ def load_private_key():
     except ValueError:
         print("Private key is not in the expected format.")
         sys.exit(1)
-
-
 
 
 def gen_rand_string(length):
@@ -56,21 +49,10 @@ def encrypt_rand_string(user_name):
 
     # Generate the random string
     rand_string = gen_rand_string(16)
-    #print("Random String:", rand_string)
 
     # Encrypt the random string
     encrypted_data = cipher.encrypt(rand_string.encode())
     return encrypted_data, rsa_key
-
-#def decrypt_data(encrypted_data, rsa_key: RsaKey):
-#    private_key = load_private_key()
-#    rsa_private_key = RSA.import_key(private_key)
-#    if rsa_private_key.n != rsa_key.n or rsa_private_key.e != rsa_key.e:
-#        print("Private key does not match the public key.")
-#        return None
-#    cipher = PKCS1_OAEP.new(rsa_private_key)
-#    decrypted_data = cipher.decrypt(encrypted_data)
-#    return decrypted_data.decode()
 
 def decrypt_data(encrypted_data, rsa_key_pair: RsaKey):
     try:

@@ -16,14 +16,6 @@ def load_public_keys():
         data = json.load(file)
     return data
 
-# Old check for if user is admin(all users are right now)
-#def check_user(userID, pubkey):
-#    public_keys = load_public_keys()
-#    for user_dict in public_keys:
-#        if user_dict.get('UserID') == userID and str(user_dict.get('Pubkey')) == str(pubkey):
-#            return True
-#    return False
-
 def print_ascii_art(art):
     for line in art.splitlines():
         print(line)
@@ -66,16 +58,6 @@ def mainpart():
         else:
             print("Invalid option. Please enter a valid option (1, 2, or 3).")
 
-#Charles work below
-
-#def enter_admin_mode():
-#    print("\nAdministrative Mode:")
-#    decrypted_string, user_name = TestFunction.Allow()
-#    if decrypted_string:
-#        print("User authenticated.")
- #       administrative_menu(decrypted_string, user_name)
-#    else:
- #       print("Access denied.")
 
 def enter_admin_mode():
     print("\nAdministrative Mode:")
@@ -121,7 +103,7 @@ def create_key_pair():
 
 def add_public_key():
     username = input("Enter the name of the user: ")
-    with open("C:\\Users\\ryank\\OneDrive\\Desktop\\CleanUp\\School\\Year2\\Semester 2\\Capstone\\Operation RESL\\Test Files\\testkeys\\public.pem", "rb") as public_file:
+    with open("C:\\Temp\\public.pem", "rb") as public_file:
         public_key = public_file.read()
     public_key_str = public_key.decode()
     public_keys = load_public_keys()
